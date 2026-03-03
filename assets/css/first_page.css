@@ -1,0 +1,44 @@
+.header .header-social-links {
+  padding-right: 15px;
+}
+
+.header .header-social-links a {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  padding-left: 6px;
+  display: inline-block;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.header .header-social-links a:hover {
+  color: var(--accent-color);
+}
+
+.header .header-social-links a i {
+  line-height: 0px;
+}
+
+@media (max-width: 1200px) {
+  .header .logo {
+    order: 1;
+  }
+
+  .header .header-social-links {
+    order: 2;
+  }
+
+:root {
+  --background-color: #faf0e6; /* Background color for the entire website, including individual sections */
+  --default-color: #00008B; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #FF6F61; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #34b7a7; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+.qr-top-right {
+  position: fixed;       /* Sticks to screen even when scrolling */
+  top: calc(100px + 20px);             /* Distance from top */
+  right: 10px;           /* Distance from right */
+  z-index: 1000;         /* Ensure it's on top of other elements */
+}
