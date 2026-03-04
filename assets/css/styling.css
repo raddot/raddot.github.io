@@ -1426,6 +1426,14 @@ section,
   margin-top: 0;
 }
 
+@media (max-width: 768px) {
+  #skills-education {
+    max-width: 100%;
+    margin-left: 0;
+    padding: 0 20px;  /* optional nice spacing */
+  }
+}
+
 #projects {
   margin-left: 150px;
 }
@@ -1443,6 +1451,7 @@ section,
     display: none;
   }
 }
+
 
 
 
