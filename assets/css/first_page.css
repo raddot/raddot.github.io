@@ -30,7 +30,7 @@
 :root {
   --background-color: #faf0e6; /* Background color for the entire website, including individual sections */
   --default-color: #00008B; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #5A0F2E; /* Color for headings, subheadings and title throughout the website */
+  --heading-color: #FF6F61; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #34b7a7; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
