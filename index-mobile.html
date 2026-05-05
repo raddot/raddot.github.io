@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Home — Radhika Dotihal</title>
+    <script>
+    (function () {
+      var ua = navigator.userAgent || '';
+      var isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+      var isIPad = /iPad/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (!isMobileUA && !isIPad) {
+        window.location.replace('index.html');
+      }
+    })();
+    </script>
+    <style>
+    @media (max-width: 768px) {
+    body {
+    background-attachment: scroll !important;
+        }
+    }
+    </style>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: sans-serif;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+    }
+
+    .intro {
+      flex: 1;
+      max-width: 50%;
+      padding-right: 20px;
+    }
+    .intro h1, .intro h2, .intro h3 {
+      color: #FF6F61;
+    }
+    .intro h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .intro p {
+      font-size: 1.25rem;
+      color: #555;
+    }
+
+    .photo-nav-container {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      flex-shrink: 0;
+    }
+
+    .photo-nav-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50% / 50%;
+      display: block;
+    }
+
+    .nav-around {
+      position: absolute;
+      top: 50%;
+      left: -120px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .nav-around a {
+      text-decoration: none;
+      color: #000;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 12px;
+      border-radius: 0.5px;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      transition: background 0.3s ease;
+    }
+    .nav-around a:hover {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+        text-align: center;
+        margin: 0;
+      }
+      .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .intro {
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+      .photo-nav-container {
+        width: 200px;
+        height: 260px;
+        margin: 0 auto;
+      }
+      .nav-around {
+        position: relative;
+        left: 0;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1px;
+      }
+      .nav-around a {
+        margin: 0 3px;
+        font-size: 0.9rem;
+      }
+.link-left {
+  position: absolute;
+  left: -60px;
+  font-size: 1rem;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #000;
+  background: transparent;
+  pointer-events: auto;
+}
+
+.link-about {
+    top: 30%;
+    left: -180px;
+}
+
+.link1 { top: 10%; }
+.link2 { top: 30%;}
+.link3 { top: 50%; }
+.link4 { top: 70%; }
+
+    }
+
+    </style>
+    <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .info {
+      text-align: center;
+    }
+
+    </style>
+    <style>
+    /* This page must never show a QR widget (no qrcode.js, no #qr). Belt-and-suspenders if cache/extensions inject markup. */
+    #qr,
+    .qr-top-right {
+      display: none !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+      position: absolute !important;
+      clip: rect(0, 0, 0, 0) !important;
+      border: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    </style>
+
+</head>
+
+<body class="mobile-home">
+<style>
+body {
+  background-image:
+    linear-gradient(135deg, rgba(255,245,242,0.8), rgba(255,227,220,0.8)),
+    url('assets/img/background-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  min-height: 100vh;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-image:
+      linear-gradient(135deg, rgba(255,245,242,0.38), rgba(255,227,220,0.32)),
+      url('assets/img/mobile.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    min-height: 100dvh;
+  }
+}
+</style>
+
+<style>
+/* One-screen mobile hero: start from top, no vertical centering gap; tighter vertical rhythm */
+/*
+  Background note: the gradient is painted ON TOP of the JPG (first layer = top).
+  Using ~0.95 alpha washed out mobile.jpg; ~0.35 keeps a light tint so the pattern stays visible.
+*/
+body.mobile-home {
+  min-height: 100dvh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  padding-left: max(env(safe-area-inset-left), 0px);
+  padding-right: max(env(safe-area-inset-right), 0px);
+  padding-top: max(env(safe-area-inset-top), 4px);
+  padding-bottom: max(env(safe-area-inset-bottom), 6px);
+  box-sizing: border-box;
+  background-image:
+    linear-gradient(135deg, rgba(255,245,242,0.38), rgba(255,227,220,0.32)),
+    url('assets/img/mobile.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+/* Mobile-first hero composition: tighter and centered */
+/* Kill inherited flex:1 on .intro from head — it was eating vertical space and leaving a gap above the photo */
+body.mobile-home .container {
+  width: min(94vw, 380px);
+  margin: 0 auto;
+  padding: 4px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start !important;
+  gap: 0;
+  flex: 0 1 auto;
+  min-height: 0;
+}
+
+body.mobile-home .intro {
+  flex: 0 0 auto !important;
+  max-width: 100%;
+  padding-right: 0;
+  margin-bottom: 0 !important;
+  text-align: center;
+}
+
+.intro h1 {
+  font-size: clamp(2.15rem, 9.5vw, 2.85rem);
+  line-height: 1.05;
+  margin: 0 0 2px;
+  padding-top: 0;
+}
+
+.intro h2 {
+  font-size: clamp(0.92rem, 3.8vw, 1.1rem);
+  line-height: 1.2;
+  margin: 0;
+}
+
+body.mobile-home .photo-nav-container {
+  width: min(52vw, 200px);
+  height: auto;
+  min-height: 0;
+  margin: 6px auto 0;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Base .nav-around uses top:50%; mobile switches to relative but top was never reset — that offset entire nav below the photo */
+body.mobile-home .photo-nav-container .nav-around {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  margin-top: 8px;
+  width: 100%;
+}
+
+body.mobile-home .photo-nav-container img {
+  width: 100%;
+  height: min(66vw, 255px);
+  object-fit: cover;
+  border-radius: 50% / 50%;
+  display: block;
+}
+
+body.mobile-home .intro center {
+  display: block;
+  margin: 4px 0 0;
+  line-height: 1;
+}
+</style>
+
+<div class="container">
+    <div class="intro">
+        <h1 style="text-align: center;color: #ff6b6b;">RADHIKA DOTIHAL</h1>
+        <h2 style="text-align: center;color: #1b3b6f;margin: 1px;">Code by Day,</h2>
+        <h2 style="text-align: center;color: #1b3b6f;margin: 1px;">Classical Dance by Soul</h2>
+        <center>
+        <a href="https://www.linkedin.com/in/radhika-dotihal/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/raddot" class="GitHub"><i class="bi bi-github"></i></a>
+        </center>
+    </div>
+
+    <div class="photo-nav-container">
+        <img src="assets/img/Final_pic.jpg" alt="Profile Photo">
+
+        <div class="nav-around">
+            <a href="about.html" style="margin: 0px;">About</a>
+            <a href="projects.html" style="margin: 0.1px;">Projects</a>
+            <a href="contact.html">Contact</a>
+            <a href="resume.html">Resume</a>
+        </div>
+
+        <style>
+               .nav-around {
+               display: flex;
+               gap: 10px;
+               justify-content: center;
+               }
+
+               .nav-around a {
+               color: #208f8c;
+               background: transparent;
+               font-family: Times Roman;
+               font-size: 2rem;
+               text-decoration: none;
+               font-weight: 900;
+               transition: color 0.3s ease;
+               }
+
+               .nav-around a:hover {
+               transform: scale(1.5);
+               font-size: 1.5em;
+               background-color: #ffe6d9;
+               color: #166b68;
+               box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+               }
+
+               @media (max-width: 768px) {
+                .nav-around {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                }
+               }
+        </style>
+    </div>
+</div>
+<script>
+(function () {
+  function removeQrNodes() {
+    var el = document.getElementById('qr');
+    if (el) el.remove();
+    document.querySelectorAll('.qr-top-right').forEach(function (node) {
+      node.remove();
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', removeQrNodes);
+  } else {
+    removeQrNodes();
+  }
+})();
+</script>
+</body>
+</html>
