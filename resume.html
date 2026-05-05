@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Resume — Radhika Dotihal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      background: #2b2b2b;
+    }
+    body {
+      margin: 0;
+      padding:
+        max(env(safe-area-inset-top), 8px)
+        max(env(safe-area-inset-right), 10px)
+        max(env(safe-area-inset-bottom), 12px)
+        max(env(safe-area-inset-left), 10px);
+      min-height: 100dvh;
+      background: #2b2b2b;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    #pdf-status {
+      color: #e0e0e0;
+      text-align: center;
+      padding: 20px 16px;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    #pdf-root {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    #pdf-root canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 16px;
+      background: #fff;
+      border-radius: 2px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+    }
+    #pdf-root canvas:last-child {
+      margin-bottom: 8px;
+    }
+    .pdf-footer {
+      text-align: center;
+      padding: 8px 12px 20px;
+      font-size: 0.9rem;
+    }
+    .pdf-footer a {
+      color: #8ec5ff;
+    }
+    #pdf-fallback {
+      display: none;
+      padding: 16px;
+    }
+    #pdf-fallback iframe {
+      width: 100%;
+      min-height: 80vh;
+      border: 0;
+      background: #fff;
+    }
+  </style>
+  <!--
+    Chrome’s built-in PDF viewer in an iframe often shows a tiny page with huge gray margins.
+    We render the PDF with PDF.js so each page is scaled to the screen width (readable on mobile).
+  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="pdf-status">Loading resume…</div>
+  <div id="pdf-root" aria-busy="true"></div>
+  <div id="pdf-fallback"></div>
+  <div class="pdf-footer">
+    <a id="pdf-direct" href="assets/img/RadhikaDotihal.pdf" download>Download PDF</a>
+  </div>
+  <script>
+    (function () {
+      var PDF_SRC = 'assets/img/RadhikaDotihal.pdf';
+      var statusEl = document.getElementById('pdf-status');
+      var rootEl = document.getElementById('pdf-root');
+      var fallbackEl = document.getElementById('pdf-fallback');
+
+      function showError(msg) {
+        statusEl.textContent = msg;
+        statusEl.style.color = '#ffb4b4';
+        fallbackEl.style.display = 'block';
+        fallbackEl.innerHTML =
+          '<p style="color:#eee;text-align:center;margin-bottom:12px;">Open the file directly for the best view on some phones.</p>' +
+          '<iframe src="' +
+          PDF_SRC +
+          '" title="Resume PDF fallback"></iframe>';
+      }
+
+      if (typeof pdfjsLib === 'undefined') {
+        showError('Could not load PDF viewer. Using fallback.');
+        return;
+      }
+
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+      function cssWidthForPage() {
+        return Math.min(window.innerWidth - 20, 920);
+      }
+
+      function renderPage(page, pageNum) {
+        var cssW = cssWidthForPage();
+        var base = page.getViewport({ scale: 1 });
+        var scale = cssW / base.width;
+        var viewport = page.getViewport({ scale: scale });
+        var dpr = window.devicePixelRatio || 1;
+
+        var canvas = document.createElement('canvas');
+        canvas.setAttribute('role', 'img');
+        canvas.setAttribute('aria-label', 'Resume page ' + pageNum);
+
+        var ctx = canvas.getContext('2d', { alpha: false });
+        var w = Math.floor(viewport.width * dpr);
+        var h = Math.floor(viewport.height * dpr);
+        canvas.width = w;
+        canvas.height = h;
+        canvas.style.width = Math.floor(viewport.width) + 'px';
+        canvas.style.height = Math.floor(viewport.height) + 'px';
+
+        var renderParams = {
+          canvasContext: ctx,
+          viewport: viewport,
+        };
+        if (dpr !== 1) {
+          renderParams.transform = [dpr, 0, 0, dpr, 0, 0];
+        }
+
+        return page
+          .render(renderParams)
+          .promise.then(function () {
+            rootEl.appendChild(canvas);
+          });
+      }
+
+      pdfjsLib
+        .getDocument({
+          url: PDF_SRC,
+          withCredentials: false,
+        })
+        .promise.then(function (pdf) {
+          statusEl.style.display = 'none';
+          rootEl.setAttribute('aria-busy', 'false');
+
+          var chain = Promise.resolve();
+          for (var n = 1; n <= pdf.numPages; n++) {
+            (function (pageIndex) {
+              chain = chain.then(function () {
+                return pdf.getPage(pageIndex).then(function (page) {
+                  return renderPage(page, pageIndex);
+                });
+              });
+            })(n);
+          }
+          return chain;
+        })
+        .catch(function (err) {
+          console.error(err);
+          showError('Could not display the PDF here. Try opening the file directly.');
+        });
+
+      window.addEventListener(
+        'orientationchange',
+        function () {
+          setTimeout(function () {
+            location.reload();
+          }, 300);
+        },
+        { passive: true }
+      );
+    })();
+  </script>
+</body>
+</html>
