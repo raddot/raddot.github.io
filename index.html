@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Radhika Dotihal</title>
+<meta name="description" content="Radhika Dotihal — software engineer and classical dancer.">
+
+<!-- Favicons -->
+<link href="assets/img/favicon.png" rel="icon">
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Vendor CSS Files (kept for icons; other pages on the site rely on these too) -->
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  html, body { max-width: 100%; overflow-x: hidden; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FBF3F0;
+    color: #2B2320;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; }
+
+  .mandala {
+    position: absolute;
+    top: -180px;
+    left: -180px;
+    width: 520px;
+    height: 520px;
+    opacity: 0.06;
+    background: radial-gradient(circle at center, transparent 0 30%, #7A1F3D 30% 31%, transparent 31% 40%, #7A1F3D 40% 41%, transparent 41%),
+                repeating-conic-gradient(#7A1F3D 0deg 2deg, transparent 2deg 30deg);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ===== Top bar ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(251,243,240,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid #eeded8;
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px clamp(20px, 5vw, 64px);
+    max-width: 1280px;
+    margin: 0 auto;
+    gap: 16px;
+  }
+
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: clamp(17px, 4vw, 21px);
+    color: #7A1F3D;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  nav { display: flex; gap: 38px; }
+
+  nav a {
+    text-decoration: none;
+    color: #0F5257;
+    font-weight: 500;
+    font-size: 14.5px;
+    letter-spacing: 0.02em;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0%;
+    height: 1.5px;
+    background: #C9A227;
+    transition: width 0.2s ease;
+  }
+  nav a:hover::after { width: 100%; }
+
+  .nav-toggle { display: none; background: none; border: none; font-size: 22px; color: #7A1F3D; cursor: pointer; }
+
+  .qr-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    color: #8a7d78;
+    flex-shrink: 0;
+  }
+  .qr-chip #qr { line-height: 0; border-radius: 6px; overflow: hidden; border: 1px solid #e6d9d4; }
+  .qr-chip #qr img { display: block; }
+  /* ===== Hero ===== */
+  .hero { position: relative; overflow: hidden; }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: clamp(24px, 5vw, 40px);
+    padding: clamp(36px, 8vw, 70px) clamp(20px, 5vw, 64px) clamp(48px, 10vw, 100px);
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: clamp(11px, 2.6vw, 12.5px);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #C9A227;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before { content: ''; width: 22px; height: 1px; background: #C9A227; flex-shrink: 0; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: clamp(2.15rem, 6.5vw, 56px);
+    line-height: 1.1;
+    color: #4A1428;
+    margin-bottom: 18px;
+  }
+
+  .tagline {
+    font-size: 18.5px;
+    color: #4a4038;
+    max-width: 440px;
+    margin-bottom: 30px;
+  }
+  .tagline strong { color: #0F5257; font-weight: 600; }
+
+  .cta-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: #7A1F3D;
+    color: #fff;
+    border: none;
+    padding: 13px 26px;
+    border-radius: 4px;
+    font-size: 14.5px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #611731; }
+
+  .btn-secondary {
+    color: #0F5257;
+    font-size: 14.5px;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid #0F5257;
+    padding-bottom: 2px;
+  }
+
+  .socials { display: flex; gap: 16px; margin-top: 32px; }
+  .socials a {
+    width: 34px; height: 34px;
+    border: 1px solid #d9c9c2;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #7A1F3D;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .socials a:hover { background: #7A1F3D; color: #fff; border-color: #7A1F3D; }
+
+  .photo-wrap { position: relative; justify-self: center; }
+
+  .photo-frame {
+    width: 320px;
+    height: 400px;
+    border-radius: 4px 60px 4px 60px;
+    background: linear-gradient(160deg, #e8c9c0, #cfa79c);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 60px -20px rgba(122,31,61,0.35);
+  }
+  .photo-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+  }
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    top: 16px; left: 16px; right: -16px; bottom: -16px;
+    border: 1.5px solid #C9A227;
+    border-radius: 4px 60px 4px 60px;
+    z-index: -1;
+  }
+  .flip-card {
+    width: min(520px, 78vw);
+    aspect-ratio: 520 / 500;
+    max-height: 60vh;
+    perspective: 1400px;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .flip-card::before {
+    content: '';
+    position: absolute;
+    top: 12px; left: 12px; right: -12px; bottom: -12px;
+    border: 1.5px solid #C9A227;
+    border-radius: 4px 60px 4px 60px;
+    z-index: -1;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+
+  .flip-card:hover .flip-card-inner,
+  .flip-card.is-flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 4px 60px 4px 60px;
+    overflow: hidden;
+    background: linear-gradient(160deg, #e8c9c0, #cfa79c);
+    box-shadow: 0 30px 60px -20px rgba(122,31,61,0.35);
+  }
+
+  .flip-face img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+  }
+
+  .flip-back {
+    transform: rotateY(180deg);
+  }
+
+  .flip-hint {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(255,255,255,0.85);
+    color: #7A1F3D;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .caption-tag {
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border: 1px solid #eadfd9;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 12.5px;
+    color: #5a4d47;
+    box-shadow: 0 8px 20px -8px rgba(0,0,0,0.15);
+    white-space: nowrap;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 64px;
+    font-size: 12.5px;
+    color: #a89a93;
+    border-top: 1px solid #eeded8;
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (max-width: 900px) {
+    .qr-chip { display: none; }
+    nav { position: fixed; top: 64px; left: 0; right: 0; background: #fff; flex-direction: column; gap: 0; padding: 10px 0; border-bottom: 1px solid #eeded8; display: none; max-height: calc(100vh - 64px); overflow-y: auto; }
+    nav.open { display: flex; }
+    nav a { padding: 12px 24px; width: 100%; }
+    .nav-toggle { display: block; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .photo-wrap { margin-top: 10px; justify-self: center; width: 100%; }
+    .flip-card { width: min(420px, 78vw); }
+  }
+
+  @media (max-width: 480px) {
+    .cta-row { flex-direction: column; align-items: stretch; gap: 14px; }
+    .btn-primary { text-align: center; }
+    .socials { justify-content: flex-start; }
+    .flip-card { width: min(300px, 82vw); max-height: 50vh; }
+    .caption-tag { bottom: -18px; padding: 7px 16px; font-size: 12px; }
+  }
+
+  @media (max-width: 360px) {
+    h1 { font-size: 1.85rem; }
+  }
+</style>
+</head>
+
+<body>
+<style>
+  body {
+  background-image:
+    linear-gradient(135deg, rgba(255,245,242,0.8), rgba(255,227,220,0.8)),
+    url('assets/img/background-image-with-borders.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* use scroll everywhere, fixed breaks mobile */
+  min-height: 100vh;
+  margin: 0;
+}
+</style>
+<div class="mandala"></div>
+
+<header>
+  <div class="topbar">
+    <a class="brand" href="index.html">RADHIKA DOTIHAL</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+    <nav id="navMenu">
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="resume.html">Resume</a>
+    </nav>
+    <div class="qr-chip">
+      <div id="qr"></div>
+      Scan here
+      <script>
+        const qr = new QRCode(document.getElementById("qr"), {
+          text: "http://raddot.github.io/info.html",  // Change this URL to your hosted info.html
+          width: 64,
+        height: 64,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+        });
+      </script>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Software engineer &amp; classical dancer</div>
+      <h1>Code by day,<br>classical dance<br>by soul.</h1>
+      <!--<p class="tagline">I build thoughtful software during the day and return to <strong>Bharatanatyam</strong> in the evenings</p>-->
+      <div class="cta-row">
+        <a class="btn-primary" href="projects.html">View projects</a>
+        <a class="btn-secondary" href="resume.html">Download resume</a>
+      </div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/radhika-dotihal/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/raddot" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+
+    <div class="photo-wrap">
+      <div class="flip-card" id="flipCard">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <img src="assets/img/AvatarPic.png" alt="Radhika Dotihal at Denali National Park">
+          </div>
+          <div class="flip-face flip-back">
+            <img src="assets/img/image2.jpeg" alt="Radhika Dotihal performing Bharatanatyam">
+          </div>
+        </div>
+        <div class="flip-hint" aria-hidden="true"><i class="bi bi-arrow-repeat"></i></div>
+      </div>
+      <div class="caption-tag">Radhika Dotihal</div>
+    </div>
+  </div>
+</div>
+
+<!--
+<footer>
+  &copy; 2026 Radhika Dotihal. Built with care.
+</footer>
+-->
+<script>
+  document.getElementById('navToggle').addEventListener('click', function () {
+    document.getElementById('navMenu').classList.toggle('open');
+  });
+
+  document.getElementById('flipCard').addEventListener('click', function () {
+    this.classList.toggle('is-flipped');
+  });
+
+  // Close the mobile nav automatically once a link is tapped
+  document.querySelectorAll('#navMenu a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      document.getElementById('navMenu').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
